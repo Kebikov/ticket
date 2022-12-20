@@ -1,0 +1,31 @@
+.header {
+    background-color: #000;
+    // .header__body
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    // .header__time
+
+    &__time {
+        font-family: 'Roboto';
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 0px 0px 0px 20px;
+        flex: 0 1 70%;
+    }
+
+    // .header__info
+
+    &__info {
+        flex: 0 1 30%;
+        & img {
+            object-fit: cover;
+            width: 100%;
+
+        }
+    }
+}
