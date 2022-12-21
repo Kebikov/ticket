@@ -149,6 +149,14 @@ const Service = () => {
 const TicketBlock = () => {
     const contextMy = useContext(dataMy);
 
+    const fullScreen = () => {
+        if(document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+        }else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        }
+    }
+
     return(
         <div className="ticket-block">
             <div className="ticket-block__body">
@@ -157,7 +165,7 @@ const TicketBlock = () => {
                         <img src={ticket} alt="#" />
                         <div className="ticket-block__tecket-text" >Билеты</div>
                     </div>
-                    <div className="ticket-block__pay">
+                    <div className="ticket-block__pay" onClick={fullScreen}>
                         <div className="ticket-block__pay-text">Купить</div>
                     </div>
                 </div>

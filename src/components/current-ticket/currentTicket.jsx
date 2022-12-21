@@ -66,14 +66,20 @@ const WhiteBox = () => {
 
     console.log('info',infoTicket.busNumber);
 
-    const x = '000';
+    const fullScreen = () => {
+        if(document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+        }else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        }
+    }
 
     return(
         <div className="white-box">
             <div className="white-box__body">
                 <div className="white-box__title">Минск</div>
                 <div className="white-box__sub-title">Государственное предприятие "Минсктранс"</div>
-                <div className="white-box__qr">
+                <div className="white-box__qr" onClick={fullScreen}>
                     <img src={qr} alt="#" />
                 </div>
                 <div className="white-box__buss">

@@ -11,7 +11,6 @@ const StartPage = () => {
         }else if (document.documentElement.mozRequestFullScreen) {
             document.documentElement.mozRequestFullScreen();
         }
-        
     }
 
     const exitFullScreen = () => {
