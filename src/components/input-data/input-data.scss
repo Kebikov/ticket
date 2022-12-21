@@ -1,0 +1,71 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 20px 20px;
+}
+
+.checkbox {
+    font-family: 'Roboto';
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    & input {
+        width: 30px;
+        height: 30px;
+        margin: 0px 5px 0px 0px;
+    }
+}
+
+.label {
+    margin: 20px 0px 10px 0px;
+    font-family: 'Roboto';
+    color: #fff;
+    font-size: 20px;
+}
+
+.input {
+    height: 30px;
+    font-family: 'Roboto';
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    padding: 10px;
+}
+
+.radio-group-path {
+    display: flex;
+    align-items: center;
+}
+
+.label-radio {
+    font-family: 'Roboto';
+    color: #fff;
+    font-size: 20px;
+    margin: 0px 20px 0px 7px;
+    display: flex;
+    align-items: center;
+    & input {
+        margin: 0px 5px 0px 0px;
+    }
+}
+
+.radio {
+    width: 20px;
+    height: 20px;
+}
+
+.block-147 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button {
+    margin: 40px 0px 0px 0px;
+    padding: 10px 0px 10px 0px;
+    border-radius: 10px;
+    background-color: #006d57;
+    font-family: 'Roboto';
+    color: #fff;
+    font-size: 24px;
+}

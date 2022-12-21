@@ -26,6 +26,10 @@ const StartPage = () => {
         }, 500);
     }
 
+    const goInput = () => {
+        navigate('/input');
+    }
+
     return(
         <>
             <Header/>
@@ -54,7 +58,7 @@ const StartPage = () => {
                         <div className="popup__body">
                             <div className="popup__line">
                                 <div className="popup__line-left roboto" onClick={fullScreen}><span>Fingerprint</span></div>
-                                <div className="popup__line-right roboto" onClick={exitFullScreen}>Face</div>
+                                <div className="popup__line-right roboto" onClick={goInput}>Face</div>
                             </div>
                             <div className="popup__autor roboto">Авторизация</div>
                             <div className="popup__sub-autor roboto">по биометрическим данным</div>

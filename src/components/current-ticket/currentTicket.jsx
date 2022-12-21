@@ -1,6 +1,5 @@
 import './curentTicket.scss';
 import { useContext, useState, useEffect } from 'react';
-import { contextApp } from '../../app/App';
 import { motion } from 'framer-motion';
 import cub from '../../resource//img/oplati/cub.png';
 import qr from '../../resource/img/ticket/qr.jpg';
@@ -8,16 +7,10 @@ import buss from '../../resource/img/ticket/buss.jpg';
 import question from '../../resource/img/ticket/question.png';
 import arrow from '../../resource/img/oplati/arr.png';
 import down from '../../resource/img/ticket/down.jpg';
+import video from '../../resource/img/ticket/1.mp4';
 
 const CurrentTicket = ({active, onActive}) => {
-    useEffect(() => {
-        setHi(high);
-    },[]);
-    const [hi, setHi] = useState(null);
-
-    const high = useContext(contextApp);
     
-
     const meMotion = {
         start: {
             x: '100%'
@@ -31,12 +24,12 @@ const CurrentTicket = ({active, onActive}) => {
     }
 
     return(
-        <motion.div className='current-ticket' style={{top: `${hi}px`}} variants={meMotion} initial={'start'} animate={'end'}>
+        <motion.div className='current-ticket' variants={meMotion} initial={'start'} animate={'end'}>
             <HeaderTicket onActive={onActive} />
             <div className="current-ticket__body">
                 <div className="current-ticket__green">
                     <div className="current-ticket__green-body">
-                        <img src={cub} alt="#" />
+                        <video src={video} width="140px" height="#" autoPlay={true} loop muted ></video>
                     </div>
                 </div>
                 <WhiteBox/>
@@ -63,18 +56,17 @@ const HeaderTicket = ({onActive}) => {
 }
 
 const WhiteBox = () => {
-    const registrationPlate = '4115 ас';
-    const numberBus = '103';
-    const path = 'ДС \"Малиновка-4\" - ДС \"Юго-Запад\"';
+    useEffect(() => {
+        const bus = JSON.parse(localStorage.getItem('bus'));
+        console.log('CurrentTicket',bus);
+        console.log('',bus.bus[0]);
+        setInfoTicket(bus);
+    },[]);
+    const [infoTicket, setInfoTicket] = useState({});
 
-    const dateEntity = new Date();
-    const data = dateEntity.getDate();
-    const month = dateEntity.getMonth() + 1;
-    const year = dateEntity.getFullYear();
-    const fullDate = `${data}.${month}.${year}`;
-    const hours = dateEntity.getHours();
-    const minutes = dateEntity.getMinutes();
-    const currentTimeTicket = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+    console.log('info',infoTicket.busNumber);
+
+    const x = '000';
 
     return(
         <div className="white-box">
@@ -88,14 +80,14 @@ const WhiteBox = () => {
                     <img src={buss} alt="#" />
                 </div>
                 <div className="white-box__info">
-                    Рег.знак:<span>{registrationPlate}</span> A_№{numberBus} ({path}).
+                    Рег.знак:<span>{infoTicket.regNumber}</span>. A_№{infoTicket.busNumber} ({infoTicket.path}).
                 </div>
                 <div className="subinfo">
                     {/* box-1 */}
                     <div className="subinfo__box mergin">
                         <div className="subinfo__left">
                             <div className="subinfo__up-text">Номер ТС</div>
-                            <div className="subinfo__down-text underline-text">{'0100' + numberBus}</div>
+                            <div className="subinfo__down-text underline-text">{infoTicket.tsNumber}</div>
                         </div>
                         <div className="subinfo__right">
                             <div className="subinfo__up-text">Номер билета</div>
@@ -106,11 +98,11 @@ const WhiteBox = () => {
                     <div className="subinfo__box">
                         <div className="subinfo__left">
                             <div className="subinfo__up-text">Дата покупки</div>
-                            <div className="subinfo__down-text">{fullDate}</div>
+                            <div className="subinfo__down-text">{infoTicket.fullDate}</div>
                         </div>
                         <div className="subinfo__right">
                             <div className="subinfo__up-text">Время</div>
-                            <div className="subinfo__down-text">{currentTimeTicket + ':00'}</div>
+                            <div className="subinfo__down-text">{infoTicket.currentTimeTicket}</div>
                         </div>
                     </div>
                 </div>
