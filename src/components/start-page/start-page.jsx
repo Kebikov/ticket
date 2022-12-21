@@ -6,7 +6,12 @@ import { useNavigate } from 'react-router-dom';
 const StartPage = () => {
 
     const fullScreen = () => {
-        document.documentElement.webkitRequestFullscreen();
+        if(document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+        }else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        }
+        
     }
 
     const exitFullScreen = () => {

@@ -1,7 +1,10 @@
 .wrapper {
+    background-color: #000;
+    
     min-height: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: #000;
+    position: relative;
+    overflow: hidden;
 }

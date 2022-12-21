@@ -3,26 +3,18 @@ $color-background: #006d57;
 
 //=.oplati
 .oplati {
-    // .oplati__boby
-    flex: 1 1 auto;
     background-color: rgb(0, 0, 0);
-    display: flex;
-    flex-direction: column;
     position: relative;
-    transition: all 0.7s ease;
-    &.active {
-        transform: translate(-100%, 0);
-    }
 }
-
 
 .body-oplati {
-    flex: 1 1 auto;
+    
 }
+
 
 //=.header-oplati
 .header-oplati {
-    margin: 0px 0px 10px 0px;
+    margin: 35px 0px 10px 0px;
     //* .header-oplati__body
     &__body {
         display: flex;
@@ -37,7 +29,7 @@ $color-background: #006d57;
         & img {
             object-fit: cover;
             width: 100%;
-            height: 50px;
+            height: 40px;
         }
     }
     &__text {
@@ -66,8 +58,8 @@ $color-background: #006d57;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 45px;
-            height: 45px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             background-color: $color-background;
         }
@@ -123,7 +115,7 @@ $color-background: #006d57;
     &__cash-text {
         color: $color-oplati;
         font-family: 'Roboto';
-        font-size: 33px;
+        font-size: 36px;
         & span {
             text-transform: uppercase;
             font-size: 24px;
@@ -134,13 +126,18 @@ $color-background: #006d57;
     &__icon {
         display: flex;
         justify-content: space-between;
-        padding: 20px 20px 30px 20px;
+        padding: 20px 20px 20px 20px;
     }
     // .main__box
     &__box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         & img {
             object-fit: cover;
-            width: 60px;
+            width: 40px;
+            height: 35px;
         }
     }
     // .main__icon-text
@@ -161,7 +158,7 @@ $color-background: #006d57;
         flex: 0 1 94%;
         background-color: #0c7e6b;
         border-radius: 10px;
-        padding: 15px 0px 15px 0px;
+        padding: 14px 0px 14px 0px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -199,8 +196,8 @@ $color-background: #006d57;
         justify-content: space-between;
         & img {
             object-fit: cover;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             margin: 0px 10px 0px 0px;
         }
     }
@@ -208,7 +205,7 @@ $color-background: #006d57;
     &__text {
         color: $color-oplati;
         font-family: 'Roboto';
-        font-size: 30px;
+        font-size: 25px;
         padding: 0px 0px 0px 10px;
     }
 }
@@ -224,7 +221,7 @@ $color-background: #006d57;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 60px;
+        height: 55px;
         margin: 0px 0px 10px 0px;
     }
     // .ticket-block__ticket
@@ -274,7 +271,7 @@ $color-background: #006d57;
     }
     // .ticket-block__down-body
     &__down-body {
-        height: 60px;
+        height: 55px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -311,6 +308,7 @@ $color-background: #006d57;
 
 //=.rec
 .rec {
+    flex: 1 1 auto;
     object-fit: cover;
     width: 100%;
     padding: 10px 7px 0px 7px;
@@ -318,6 +316,8 @@ $color-background: #006d57;
 
 //=footer
 .footer {
+    padding: 45px 0px 0px 0px;
+    width: 100vw;
     & img {
         object-fit: cover;
         width: 100%;

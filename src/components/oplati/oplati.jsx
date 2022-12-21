@@ -1,6 +1,7 @@
 import './oplati.scss';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState, useContext, createContext } from 'react';
+import { useState, useContext, createContext, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import CurrentTicket from '../current-ticket/currentTicket';
 import Header from '../header/Header';
 import cashBox from '../../resource/img/oplati/cash-box.jpg';
@@ -20,8 +21,9 @@ import footer from '../../resource/img/oplati/footer.jpg';
 
 const dataMy = createContext({});
 
+//=Oplati
 const Oplati = () => {
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(false);
 
     const onActive = () => {
         setActive(item => !item);
@@ -29,24 +31,37 @@ const Oplati = () => {
 
     const {Provider} = dataMy;
 
+    const meMotion ={
+        start: {
+            x: 0
+        },
+        end: {
+            x: active ? '-100%' : 0,
+            transition: {
+                duration: .7
+            }
+        }
+    }
+
     return(
         <>
             <Provider value={onActive}>
                 <Header/>
-                <CurrentTicket active={active}/>
-                <div className={active ? 'oplati active' : 'oplati'} >
-                    <HeaderOplati/>
+                <CurrentTicket active={active} onActive={onActive} />
+                <motion.div className='oplati' variants={meMotion} initial={'start'} animate={'end'} >
                     <Body />
                     <Footer/>
-                </div>
+                </motion.div>
             </Provider>
         </>
     )
 }
 
+//=Body
 const Body = () => {
     return(
-        <div className="body-oplati">
+        <div className="body-oplati" >
+            <HeaderOplati/>
             <Main/>
             <Service/>
             <TicketBlock/>
