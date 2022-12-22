@@ -14,6 +14,17 @@ const InputData = () => {
             regNumber:''
         }}
         onSubmit = {value => {
+
+            const handlePath = (num, pathHome, pathMetro) => {
+                if(value.bus === (num + '')) {
+                    if(value.path === 'home') {
+                        value.path = pathHome;
+                    }else if(value.path === 'metro') {
+                        value.path = pathMetro;
+                    }
+                }
+            }
+
             localStorage.clear();
             const dateEntity = new Date();
             const data = dateEntity.getDate();
@@ -27,14 +38,9 @@ const InputData = () => {
             value['currentTimeTicket'] = currentTimeTicket + ':00';
 
             console.log('',value);
-            if(value.bus[0] === '147') {
-                if(value.path === 'home') {
-                    value.path = 'Брилевичи - ДС "Малиновка-4"'
-                }else if(value.path === 'metro') {
-                    value.path = 'ДС "Малиновка-4" - Брилевичи'
-                }
-            }
-            value['busNumber'] = value.bus[0];
+            handlePath(147,'Брилевичи - ДС "Малиновка-4"', 'ДС "Малиновка-4" - Брилевичи');
+            handlePath(103, 'ДС "Юго-Запад" - ДС "Малиновка-4"','ДС "Малиновка-4" - ДС "Юго-Запад"');
+
             const busJson = JSON.stringify(value, null,2);
             console.log('',busJson);
             localStorage.setItem('bus', busJson);
@@ -42,16 +48,11 @@ const InputData = () => {
         }}
         >
             <Form className="form" >
-                <div className="block-147">
-                    {/* checkbox */}
-                    <label className="checkbox">
-                        <Field
-                            name="bus" 
-                            type="checkbox"
-                            value="147"
-                        />
-                        147
-                    </label>
+                <div className="block-all">
+                    <div className="radio-group-bus">
+                        <Bus num={147}/>
+                        <Bus num={103}/>
+                    </div>
                     {/* radio */}
                     <div className="radio-group-path">
                         <label className="label-radio">
@@ -81,6 +82,7 @@ const InputData = () => {
                     id="tsNumber"
                     name="tsNumber"
                     type="text"
+                    autoComplete="off"
                 />
                 {/* input */}
                 <label htmlFor="regNumber" className='label'>Рег.знак:</label>
@@ -89,10 +91,25 @@ const InputData = () => {
                     id="regNumber"
                     name="regNumber"
                     type="text"
+                    autoComplete="off"
                 />
                 <button className='button' type="submit">Отправить</button>
             </Form>
         </Formik>
+    )
+}
+
+const Bus = ({num}) => {
+    return(
+            <label className="label-radio">
+                <Field 
+                    type="radio" 
+                    name="bus"
+                    value={num + ''}
+                    className="radio"
+                />
+                {num}
+            </label>
     )
 }
 

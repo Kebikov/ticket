@@ -71,10 +71,13 @@ const Body = () => {
 }
 
 const HeaderOplati = () => {
+    const navigate = useNavigate();
+    const goBack = () => navigate(-1);
+    
     return(
         <div className="header-oplati">
             <div className="header-oplati__body">
-                <div className="header-oplati__left">
+                <div className="header-oplati__left" onClick={goBack} >
                     <img src={cashBox} alt="#" />
                     <div className="header-oplati__text">Оплати</div>
                 </div>
@@ -85,9 +88,7 @@ const HeaderOplati = () => {
 }
 
 const Main = () => {
-    const navigate = useNavigate();
-    const goBack = () => navigate(-1);
-
+    
     return(
         <>
             <div className="main">
@@ -120,7 +121,7 @@ const Main = () => {
                             </div>
                         </div>
                         <div className="main_qr">
-                            <div className="main_qr-boby" onClick={goBack}>
+                            <div className="main_qr-boby" >
                                 <img src={qr} alt="#" width={'30px'} />
                                 <div className="main_qr-text">qr для оплаты</div>
                             </div>

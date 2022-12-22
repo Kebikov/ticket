@@ -58,13 +58,13 @@ const HeaderTicket = ({onActive}) => {
 const WhiteBox = () => {
     useEffect(() => {
         const bus = JSON.parse(localStorage.getItem('bus'));
-        console.log('CurrentTicket',bus);
-        console.log('',bus.bus[0]);
-        setInfoTicket(bus);
+        if(bus) {
+            setInfoTicket(bus);
+        }
     },[]);
     const [infoTicket, setInfoTicket] = useState({});
 
-    console.log('info',infoTicket.busNumber);
+    console.log('info',infoTicket?.bus);
 
     const fullScreen = () => {
         if(document.documentElement.webkitRequestFullscreen) {
@@ -86,14 +86,14 @@ const WhiteBox = () => {
                     <img src={buss} alt="#" />
                 </div>
                 <div className="white-box__info">
-                    Рег.знак:<span>{infoTicket.regNumber}</span>. A_№{infoTicket.busNumber} ({infoTicket.path}).
+                    Рег.знак:<span>{infoTicket?.regNumber}</span>. A_№{infoTicket?.bus} ({infoTicket?.path}).
                 </div>
                 <div className="subinfo">
                     {/* box-1 */}
                     <div className="subinfo__box mergin">
                         <div className="subinfo__left">
                             <div className="subinfo__up-text">Номер ТС</div>
-                            <div className="subinfo__down-text underline-text">{infoTicket.tsNumber}</div>
+                            <div className="subinfo__down-text underline-text">{infoTicket?.tsNumber}</div>
                         </div>
                         <div className="subinfo__right">
                             <div className="subinfo__up-text">Номер билета</div>
@@ -104,11 +104,11 @@ const WhiteBox = () => {
                     <div className="subinfo__box">
                         <div className="subinfo__left">
                             <div className="subinfo__up-text">Дата покупки</div>
-                            <div className="subinfo__down-text">{infoTicket.fullDate}</div>
+                            <div className="subinfo__down-text">{infoTicket?.fullDate}</div>
                         </div>
                         <div className="subinfo__right">
                             <div className="subinfo__up-text">Время</div>
-                            <div className="subinfo__down-text">{infoTicket.currentTimeTicket}</div>
+                            <div className="subinfo__down-text">{infoTicket?.currentTimeTicket}</div>
                         </div>
                     </div>
                 </div>
