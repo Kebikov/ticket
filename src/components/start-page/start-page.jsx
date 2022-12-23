@@ -1,17 +1,9 @@
 import './start-page.scss';
 import finger from '../../resource/img/start-page/fingerprint.png';
-import Header from '../header/Header';
+import fullScreen from '../../utils/fullScreen';
 import { useNavigate } from 'react-router-dom';
 
 const StartPage = () => {
-
-    const fullScreen = () => {
-        if(document.documentElement.webkitRequestFullscreen) {
-            document.documentElement.webkitRequestFullscreen();
-        }else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        }
-    }
 
     const exitFullScreen = () => {
         document.webkitExitFullscreen();
@@ -30,8 +22,6 @@ const StartPage = () => {
     }
 
     return(
-        <>
-            <Header/>
             <div className="start">
                 <div className="start__body">
                     <div className="start__pin roboto">Введите PIN</div>
@@ -78,7 +68,6 @@ const StartPage = () => {
                     </div>
                 </div>
             </div>
-        </>
     )
 }
 

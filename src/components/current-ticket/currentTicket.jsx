@@ -1,16 +1,26 @@
 import './curentTicket.scss';
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import fullScreen from '../../utils/fullScreen';
 import { motion } from 'framer-motion';
-import cub from '../../resource//img/oplati/cub.png';
 import qr from '../../resource/img/ticket/qr.jpg';
 import buss from '../../resource/img/ticket/buss.jpg';
 import question from '../../resource/img/ticket/question.png';
 import arrow from '../../resource/img/oplati/arr.png';
-import down from '../../resource/img/ticket/down.jpg';
+import { dataContex } from '../oplati/oplati';
+
 import video from '../../resource/img/ticket/1.mp4';
 
 const CurrentTicket = ({active, onActive}) => {
-    
+    useEffect(() => {
+        const bus = JSON.parse(localStorage.getItem('bus'));
+        if(bus) {
+            setInfo(bus);
+        }
+    },[]);
+    const [info, setInfo] = useState({});
+    const contex = useContext(dataContex);
+    const {clientWindowsSize} = contex.size;
+
     const meMotion = {
         start: {
             x: '100%'
@@ -23,10 +33,12 @@ const CurrentTicket = ({active, onActive}) => {
         }
     }
 
-    return(
-        <motion.div className='current-ticket' variants={meMotion} initial={'start'} animate={'end'}>
-            <HeaderTicket onActive={onActive} />
-            <div className="current-ticket__body">
+const bodyTicket = (total) => {
+    const arr = [];
+    let num = +total;
+    for(let i = num; i > 0; i = i - 1) {
+        arr.push(
+            <div className={num === 1 ? "current-ticket__body" : "current-ticket__body mb"} key={i}>
                 <div className="current-ticket__green">
                     <div className="current-ticket__green-body">
                         <video src={video} width="140px" height="#" autoPlay={true} loop muted ></video>
@@ -34,14 +46,22 @@ const CurrentTicket = ({active, onActive}) => {
                 </div>
                 <WhiteBox/>
             </div>
-            <img className='down-ticket' src={down} alt="#" />
-        </motion.div>
+        );
+    }
+    return arr;
+}
+
+    return(
+        <>
+            <motion.div className='current-ticket' variants={meMotion} initial={'start'} animate={'end'} style={{height: `${clientWindowsSize}px`}}>
+                <HeaderTicket onActive={onActive} />
+                {bodyTicket(info.total)}
+            </motion.div>
+        </>
     )
 }
 
 const HeaderTicket = ({onActive}) => {
-
-
     return(
         <div className="header-ticket">
             <div className="header-ticket__body">
@@ -63,16 +83,6 @@ const WhiteBox = () => {
         }
     },[]);
     const [infoTicket, setInfoTicket] = useState({});
-
-    console.log('info',infoTicket?.bus);
-
-    const fullScreen = () => {
-        if(document.documentElement.webkitRequestFullscreen) {
-            document.documentElement.webkitRequestFullscreen();
-        }else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        }
-    }
 
     return(
         <div className="white-box">
@@ -121,3 +131,5 @@ const WhiteBox = () => {
     )
 }
 export default CurrentTicket;
+
+

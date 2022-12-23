@@ -1,6 +1,7 @@
 import './input-data.scss';
 import { Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import imgOplati from '../../resource/img/ticket/unnamed.jpg';
 
 const InputData = () => {
     const navigate = useNavigate();
@@ -11,7 +12,8 @@ const InputData = () => {
             bus: '',
             path:'',
             tsNumber:'',
-            regNumber:''
+            regNumber:'',
+            total:''
         }}
         onSubmit = {value => {
 
@@ -48,13 +50,18 @@ const InputData = () => {
         }}
         >
             <Form className="form" >
+                <div className="input-img">
+                    <img src={imgOplati} alt="" />
+                </div>
                 <div className="block-all">
+                    <div className="section">Выбор автобуса</div>
                     <div className="radio-group-bus">
                         <Bus num={147}/>
                         <Bus num={103}/>
                     </div>
+                    <div className="section">Направление</div>
                     {/* radio */}
-                    <div className="radio-group-path">
+                    <div className="radio-group-path" >
                         <label className="label-radio">
                             <Field 
                                 type="radio" 
@@ -74,6 +81,9 @@ const InputData = () => {
                             Метро
                         </label>
                     </div>
+                    <div className="section">Количество билетов</div>
+                    <RadioDroupTotalTicket/>
+                    <div className="section">Ввод данных</div>
                 </div>
                 {/* input */}
                 <label htmlFor="ts" className='label'>TC:</label>
@@ -85,7 +95,7 @@ const InputData = () => {
                     autoComplete="off"
                 />
                 {/* input */}
-                <label htmlFor="regNumber" className='label'>Рег.знак:</label>
+                <label htmlFor="regNumber" className='label mu-20'>Рег.знак:</label>
                 <Field
                     className='input'
                     id="regNumber"
@@ -110,6 +120,31 @@ const Bus = ({num}) => {
                 />
                 {num}
             </label>
+    )
+}
+
+const RadioDroupTotalTicket = () => {
+    return(
+        <div className="radio-group-path" >
+            <label className="label-radio">
+                <Field 
+                    type="radio" 
+                    name="total"
+                    value="1"
+                    className="radio"
+                />
+                Один
+            </label>
+            <label className="label-radio">
+                <Field  
+                    type="radio" 
+                    name="total"
+                    value="2" 
+                    className="radio"
+                />
+                Два
+            </label>
+        </div>
     )
 }
 

@@ -1,9 +1,9 @@
 import './oplati.scss';
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext, createContext, useRef, useEffect } from 'react';
+import fullScreen from '../../utils/fullScreen';
 import { motion } from 'framer-motion';
 import CurrentTicket from '../current-ticket/currentTicket';
-import Header from '../header/Header';
 import cashBox from '../../resource/img/oplati/cash-box.jpg';
 import eye from '../../resource/img/oplati/eye.png';
 import plus from '../../resource/img/oplati/plus.png';
@@ -18,18 +18,33 @@ import card from '../../resource/img/oplati/card.png';
 import ticket from '../../resource/img/oplati/ticket.png';
 import rec from '../../resource/img/oplati/rec.jpg';
 import footer from '../../resource/img/oplati/footer.jpg';
+import down from '../../resource/img/ticket/down.jpg';
 
-const dataMy = createContext({});
+const dataContex = createContext({});
 
 //=Oplati
 const Oplati = () => {
+    useEffect(() => {
+        const hiHeader = document.querySelector('.header').clientHeight;
+        const clientWindowsSize = document.documentElement.clientHeight - document.querySelector('.footer').clientHeight;
+        setSize({
+            hiHeader,
+            clientWindowsSize
+        });
+    },[]);
     const [active, setActive] = useState(false);
+    const [size,setSize] = useState({});
 
     const onActive = () => {
         setActive(item => !item);
     }
 
-    const {Provider} = dataMy;
+    const entityContex = {
+        onActive,
+        size
+    }
+
+    const {Provider} = dataContex;
 
     const meMotion ={
         start: {
@@ -42,25 +57,30 @@ const Oplati = () => {
             }
         }
     }
-
+    //*return
     return(
         <>
-            <Provider value={onActive}>
-                <Header/>
+            <Provider value={entityContex}>
+
                 <CurrentTicket active={active} onActive={onActive} />
-                <motion.div className='oplati' variants={meMotion} initial={'start'} animate={'end'} >
-                    <Body />
-                    <Footer/>
+
+                <motion.div variants={meMotion} initial={'start'} animate={'end'}>
+                    <div className='oplati'>
+                        <Body/>
+                        <Footer/>
+                    </div>
                 </motion.div>
+
             </Provider>
         </>
     )
 }
 
-//=Body
+//= Body
 const Body = () => {
+    //*return
     return(
-        <div className="body-oplati" >
+        <div className="body-oplati">
             <HeaderOplati/>
             <Main/>
             <Service/>
@@ -70,12 +90,14 @@ const Body = () => {
     )
 }
 
+//= HeaderOplati
 const HeaderOplati = () => {
     const navigate = useNavigate();
     const goBack = () => navigate(-1);
-    
+    const contex = useContext(dataContex);
+
     return(
-        <div className="header-oplati">
+        <div className="header-oplati" style={{margin: `${contex?.size.hiHeader}px 0px 10px 0px`}}>
             <div className="header-oplati__body">
                 <div className="header-oplati__left" onClick={goBack} >
                     <img src={cashBox} alt="#" />
@@ -148,21 +170,13 @@ const Service = () => {
 }
 
 const TicketBlock = () => {
-    const contextMy = useContext(dataMy);
-
-    const fullScreen = () => {
-        if(document.documentElement.webkitRequestFullscreen) {
-            document.documentElement.webkitRequestFullscreen();
-        }else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        }
-    }
+    const context = useContext(dataContex);
 
     return(
         <div className="ticket-block">
             <div className="ticket-block__body">
                 <div className="ticket-block__up">
-                    <div className="ticket-block__ticket" onClick={() => contextMy()} >
+                    <div className="ticket-block__ticket" onClick={() => context.onActive()} >
                         <img src={ticket} alt="#" />
                         <div className="ticket-block__tecket-text" >Билеты</div>
                     </div>
@@ -190,12 +204,18 @@ const Rec = () => {
     )
 }
 
+//= Footer
 const Footer = () => {
+    const contex = useContext(dataContex);
+    const {clientWindowsSize} = contex.size;
+    //*return
     return(
-        <div className="footer">
-            <img src={footer} alt="#" />
+        <div className="footer" style={{top: `${clientWindowsSize}px`}} >
+            <img className='footer__oplati' src={footer} alt="#" />
+            <img className='footer__ticket' src={down} alt="#" />
         </div>
     )
 }
 
 export default Oplati;
+export {dataContex};

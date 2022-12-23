@@ -14,7 +14,7 @@ $color-background: #006d57;
 
 //=.header-oplati
 .header-oplati {
-    margin: 35px 0px 10px 0px;
+    //margin: code;
     //* .header-oplati__body
     &__body {
         display: flex;
@@ -316,11 +316,18 @@ $color-background: #006d57;
 
 //=footer
 .footer {
-    padding: 45px 0px 0px 0px;
-    width: 100vw;
-    & img {
+    position:fixed;
+    //top: code;
+    left:0;
+
+    display: flex;
+    &__oplati {
         object-fit: cover;
-        width: 100%;
+        width: 100vw;
+    }
+    &__ticket {
+        object-fit: cover;
+        width: 100vw;
     }
 }
 
