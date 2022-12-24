@@ -9,16 +9,16 @@ const InputData = () => {
     return(
         <Formik
         initialValues = {{
-            bus: '',
-            path:'',
+            bus: '147',
+            path:'home',
             tsNumber:'',
             regNumber:'',
-            total:''
+            total:'1'
         }}
         onSubmit = {value => {
 
             const handlePath = (num, pathHome, pathMetro) => {
-                if(value.bus === (num + '')) {
+                if(value.bus === num) {
                     if(value.path === 'home') {
                         value.path = pathHome;
                     }else if(value.path === 'metro') {
@@ -40,8 +40,9 @@ const InputData = () => {
             value['currentTimeTicket'] = currentTimeTicket + ':00';
 
             console.log('',value);
-            handlePath(147,'Брилевичи - ДС "Малиновка-4"', 'ДС "Малиновка-4" - Брилевичи');
-            handlePath(103, 'ДС "Юго-Запад" - ДС "Малиновка-4"','ДС "Малиновка-4" - ДС "Юго-Запад"');
+            handlePath('147','Брилевичи - ДС "Малиновка-4"', 'ДС "Малиновка-4" - Брилевичи');
+            handlePath('103', 'ДС "Юго-Запад" - ДС "Малиновка-4"','ДС "Малиновка-4" - ДС "Юго-Запад"');
+            handlePath('32c', 'ДС "Дружная" - ДС "Малиновка-4"','ДС "Малиновка-4" - ДС "Дружная"');
 
             const busJson = JSON.stringify(value, null,2);
             console.log('',busJson);
@@ -56,8 +57,9 @@ const InputData = () => {
                 <div className="block-all">
                     <div className="section">Выбор автобуса</div>
                     <div className="radio-group-bus">
-                        <Bus num={147}/>
-                        <Bus num={103}/>
+                        <Bus num={'147'} />
+                        <Bus num={'103'} />
+                        <Bus num={'32c'} />
                     </div>
                     <div className="section">Направление</div>
                     {/* radio */}

@@ -23,7 +23,7 @@ const StartPage = () => {
 
     return(
             <div className="start">
-                <div className="start__body">
+                <div className="start__body" onClick={fullScreen}>
                     <div className="start__pin roboto">Введите PIN</div>
                     <div className="start__bio roboto">или используйте биометрические данные</div>
                     <div className="start__dash">
