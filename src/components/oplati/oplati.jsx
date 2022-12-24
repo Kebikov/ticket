@@ -1,6 +1,6 @@
 import './oplati.scss';
 import { useNavigate } from 'react-router-dom';
-import { useState, useContext, createContext, useRef, useEffect } from 'react';
+import { useState, useContext, createContext, useEffect } from 'react';
 import fullScreen from '../../utils/fullScreen';
 import { motion } from 'framer-motion';
 import CurrentTicket from '../current-ticket/currentTicket';
@@ -169,9 +169,19 @@ const Service = () => {
     )
 }
 
+//= TicketBlock
 const TicketBlock = () => {
+    useEffect(() => {
+        const bus = JSON.parse(localStorage.getItem('bus'));
+        if(bus) {
+            setCounterTicket(+bus.total);
+        }
+    },[]);
+
+    const [counterTicket, setCounterTicket] = useState(0);
     const context = useContext(dataContex);
 
+    //* return
     return(
         <div className="ticket-block">
             <div className="ticket-block__body">
@@ -179,6 +189,7 @@ const TicketBlock = () => {
                     <div className="ticket-block__ticket" onClick={() => context.onActive()} >
                         <img src={ticket} alt="#" />
                         <div className="ticket-block__tecket-text" >Билеты</div>
+                        {counterTicket ? (<div className="ticket-block__caunter">{counterTicket}</div>) : null }
                     </div>
                     <div className="ticket-block__pay" onClick={fullScreen}>
                         <div className="ticket-block__pay-text">Купить</div>

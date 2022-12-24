@@ -233,12 +233,25 @@ $color-background: #006d57;
         border-radius: 10px;
         margin: 0px 10px 0px 0px;
         height: 100%;
+        position: relative;
         & img {
             object-fit: cover;
             width: 30px;
             height: 30px;
             margin: 0px 10px 0px 10px;
         }
+    }
+    &__caunter {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translate(0, -50%);
+        color: #fff;
+        font-family: 'Roboto';
+        font-size: 13px;
+        background-color: #d90019;
+        padding: 2px 7px 2px 7px;
+        border-radius: 9px;
     }
     // .ticket-block__tecket-text
     &__tecket-text {
