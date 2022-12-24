@@ -40,6 +40,12 @@ const InputData = () => {
             value['currentTimeTicket'] = currentTimeTicket + ':00';
 
             console.log('',value);
+            if(value.regNumber[4] !== ' ') {
+                let newNumber = value.regNumber.slice(0,4) + ' ' + value.regNumber.slice(4,6);
+                value.regNumber = newNumber;
+            }
+
+            //* маршруты автобусов
             handlePath('147','Брилевичи - ДС "Малиновка-4"', 'ДС "Малиновка-4" - Брилевичи');
             handlePath('103', 'ДС "Юго-Запад" - ДС "Малиновка-4"','ДС "Малиновка-4" - ДС "Юго-Запад"');
             handlePath('32c', 'ДС "Дружная" - ДС "Малиновка-4"','ДС "Малиновка-4" - ДС "Дружная"');

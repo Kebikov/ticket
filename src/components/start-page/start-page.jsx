@@ -23,7 +23,7 @@ const StartPage = () => {
 
     return(
             <div className="start">
-                <div className="start__body" onClick={fullScreen}>
+                <div className="start__body">
                     <div className="start__pin roboto">Введите PIN</div>
                     <div className="start__bio roboto">или используйте биометрические данные</div>
                     <div className="start__dash">
@@ -46,7 +46,7 @@ const StartPage = () => {
                     <div className="start__popup popup">
                         <div className="popup__body">
                             <div className="popup__line">
-                                <div className="popup__line-left roboto" onClick={fullScreen}><span>Fingerprint</span></div>
+                                <div className="popup__line-left roboto" onClick={fullScreen} ><span>Fingerprint</span></div>
                                 <div className="popup__line-right roboto" onClick={goInput}>Face</div>
                             </div>
                             <div className="popup__autor roboto">Авторизация</div>
@@ -60,7 +60,7 @@ const StartPage = () => {
                             <img src={finger} alt="#" />
                         </div>
                     </div>
-                    <div className="down">
+                    <div className="down"  onClick={fullScreen} >
                         <div className="down__body">
                             <div className="down__left roboto">отменить</div>
                             <div className="down__right roboto">забыли pin?</div>
