@@ -6,6 +6,9 @@ import imgOplati from '../../resource/img/ticket/unnamed.jpg';
 const InputData = () => {
     const navigate = useNavigate();
 
+    const goToBack = () => navigate(-1);
+
+
     return(
         <Formik
         initialValues = {{
@@ -57,7 +60,7 @@ const InputData = () => {
         }}
         >
             <Form className="form" >
-                <div className="input-img">
+                <div className="input-img" onClick={goToBack} >
                     <img src={imgOplati} alt="" />
                 </div>
                 <div className="block-all">

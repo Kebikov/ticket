@@ -11,13 +11,13 @@ const StartPage = () => {
 
     const navigate = useNavigate();
 
-    const goOplati = () => {
+    const goToOplati = () => {
         setTimeout(() => {
             navigate('/oplati');
         }, 500);
     }
 
-    const goInput = () => {
+    const goToInput = () => {
         navigate('/input');
     }
 
@@ -46,17 +46,17 @@ const StartPage = () => {
                     <div className="start__popup popup">
                         <div className="popup__body">
                             <div className="popup__line">
-                                <div className="popup__line-left roboto" onClick={fullScreen} ><span>Fingerprint</span></div>
-                                <div className="popup__line-right roboto" onClick={goInput}>Face</div>
+                                <div className="popup__line-left roboto" onClick={goToInput} ><span>Fingerprint</span></div>
+                                <div className="popup__line-right roboto">Face</div>
                             </div>
                             <div className="popup__autor roboto">Авторизация</div>
                             <div className="popup__sub-autor roboto">по биометрическим данным</div>
                             <div className="popup__text roboto">Используйте биометрические данные<br/>для входа или подтверждения операции</div>
-                            <div className="popup__abolition roboto">Отменить</div>
+                            <div className="popup__abolition roboto" onClick={exitFullScreen}>Отменить</div>
                         </div>
                     </div>
                     <div className="finger">
-                        <div className="finger__body" onClick={goOplati}>
+                        <div className="finger__body" onClick={goToOplati} >
                             <img src={finger} alt="#" />
                         </div>
                     </div>
@@ -72,3 +72,5 @@ const StartPage = () => {
 }
 
 export default StartPage;
+
+
