@@ -74,8 +74,8 @@ $color-popup: rgba(255, 255, 255, 0.8);
     // .popup__body
     &__body {
         background-color: rgb(39, 39, 39);
-        border-radius: 12px;
-        padding: 30px 10px 30px 10px;
+        border-radius: 22px;
+        padding: 20px 20px 30px 20px;
     }
     // .popup__line
     &__line {
@@ -187,7 +187,7 @@ $color-popup: rgba(255, 255, 255, 0.8);
     &__right {
         text-transform: uppercase;
         font-size: 18px;
-        color: $color-text;
+        color: rgba(255, 255, 255, 0.45);
     }
 }
 

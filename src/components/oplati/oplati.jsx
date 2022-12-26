@@ -1,7 +1,6 @@
 import './oplati.scss';
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext, createContext, useEffect } from 'react';
-import fullScreen from '../../utils/fullScreen';
 import { motion } from 'framer-motion';
 import CurrentTicket from '../current-ticket/currentTicket';
 import cashBox from '../../resource/img/oplati/cash-box.jpg';
@@ -19,16 +18,16 @@ import ticket from '../../resource/img/oplati/ticket.png';
 import rec from '../../resource/img/oplati/rec.jpg';
 import footer from '../../resource/img/oplati/footer.jpg';
 import down from '../../resource/img/ticket/down.jpg';
+import question from '../../resource/img/ticket/question.png';
+import arr from '../../resource/img/oplati/arr.png';
 
 const dataContex = createContext({});
 
 //=Oplati
 const Oplati = () => {
     useEffect(() => {
-        const hiHeader = document.querySelector('.header').clientHeight;
         const clientWindowsSize = document.documentElement.clientHeight - document.querySelector('.footer').clientHeight;
         setSize({
-            hiHeader,
             clientWindowsSize
         });
     },[]);
@@ -94,16 +93,32 @@ const Body = () => {
 const HeaderOplati = () => {
     const navigate = useNavigate();
     const goBack = () => navigate(-1);
-    const contex = useContext(dataContex);
 
     return(
-        <div className="header-oplati" style={{margin: `${contex?.size.hiHeader}px 0px 10px 0px`}}>
+        <div className="header-oplati">
             <div className="header-oplati__body">
                 <div className="header-oplati__left" onClick={goBack} >
                     <img src={cashBox} alt="#" />
                     <div className="header-oplati__text">Оплати</div>
                 </div>
                 <div className="header-oplati__avatar"><span>E</span></div>
+            </div>
+            <HeaderTicket/>
+        </div>
+    )
+}
+
+const HeaderTicket = () => {
+    const context = useContext(dataContex);
+
+    return(
+        <div className="header-ticket">
+            <div className="header-ticket__body">
+                <div className="header-ticket__left" onClick={() => context.onActive()}>
+                    <img src={arr} alt="#" />
+                    <div className="header-ticket__text">Мои билеты</div>
+                </div>
+                <img className="header-ticket__question" src={question} alt="#" />
             </div>
         </div>
     )
@@ -126,19 +141,19 @@ const Main = () => {
                         </div>
                         <div className="main__icon">
                             <div className="main__box">
-                                <img src={arrow} alt="" width={'90px'} />
+                                <img src={arrow} alt="" width={'100px'} />
                                 <div className="main__icon-text">Платежи</div>
                             </div>
                             <div className="main__box">
-                                <img src={plus} alt="" width={'90px'} />
+                                <img src={plus} alt="" width={'100px'} />
                                 <div className="main__icon-text">Пополнить</div>
                             </div>
                             <div className="main__box">
-                                <img src={two} alt="" width={'90px'} />
+                                <img src={two} alt="" width={'100px'} />
                                 <div className="main__icon-text">Переводы</div>
                             </div>
                             <div className="main__box">
-                                <img src={line} alt="" width={'90px'} />
+                                <img src={line} alt="" width={'100px'} />
                                 <div className="main__icon-text">Выписка</div>
                             </div>
                         </div>
@@ -191,7 +206,7 @@ const TicketBlock = () => {
                         <div className="ticket-block__tecket-text" >Билеты</div>
                         {counterTicket ? (<div className="ticket-block__caunter">{counterTicket}</div>) : null }
                     </div>
-                    <div className="ticket-block__pay" onClick={fullScreen}>
+                    <div className="ticket-block__pay">
                         <div className="ticket-block__pay-text">Купить</div>
                     </div>
                 </div>

@@ -1,13 +1,8 @@
 import './start-page.scss';
 import finger from '../../resource/img/start-page/fingerprint.png';
-import fullScreen from '../../utils/fullScreen';
 import { useNavigate } from 'react-router-dom';
 
 const StartPage = () => {
-
-    const exitFullScreen = () => {
-        document.webkitExitFullscreen();
-    }
 
     const navigate = useNavigate();
 
@@ -52,7 +47,7 @@ const StartPage = () => {
                             <div className="popup__autor roboto">Авторизация</div>
                             <div className="popup__sub-autor roboto">по биометрическим данным</div>
                             <div className="popup__text roboto">Используйте биометрические данные<br/>для входа или подтверждения операции</div>
-                            <div className="popup__abolition roboto" onClick={exitFullScreen}>Отменить</div>
+                            <div className="popup__abolition roboto" >Отменить</div>
                         </div>
                     </div>
                     <div className="finger">
@@ -60,7 +55,7 @@ const StartPage = () => {
                             <img src={finger} alt="#" />
                         </div>
                     </div>
-                    <div className="down"  onClick={fullScreen} >
+                    <div className="down">
                         <div className="down__body">
                             <div className="down__left roboto">отменить</div>
                             <div className="down__right roboto">забыли pin?</div>
