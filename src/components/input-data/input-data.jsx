@@ -35,7 +35,7 @@ const InputData = () => {
             const data = dateEntity.getDate();
             const month = dateEntity.getMonth() + 1;
             const year = dateEntity.getFullYear();
-            const fullDate = `${data}.${month}.${year}`;
+            const fullDate = `${data < 10 ? '0' + data : data}.${month < 10 ? '0' + month : month}.${year}`;
             const hours = dateEntity.getHours();
             const minutes = dateEntity.getMinutes();
             const currentTimeTicket = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
