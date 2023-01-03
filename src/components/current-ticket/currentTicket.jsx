@@ -1,11 +1,8 @@
 import './curentTicket.scss';
 import { useState, useEffect, useContext } from 'react';
-import fullScreen from '../../utils/fullScreen';
 import { motion } from 'framer-motion';
 import qr from '../../resource/img/ticket/qr.jpg';
 import buss from '../../resource/img/ticket/buss.jpg';
-import question from '../../resource/img/ticket/question.png';
-import arrow from '../../resource/img/oplati/arr.png';
 import { dataContex } from '../oplati/oplati';
 
 import video from '../../resource/img/ticket/1.mp4';
@@ -54,26 +51,13 @@ const bodyTicket = (total) => {
     return(
         <>
             <motion.div className='current-ticket' variants={meMotion} initial={'start'} animate={'end'} style={{height: `${clientWindowsSize}px`}}>
-                <HeaderTicket onActive={onActive} />
+                <div className="div-for-margin"></div>
                 {bodyTicket(info.total)}
             </motion.div>
         </>
     )
 }
 
-const HeaderTicket = ({onActive}) => {
-    return(
-        <div className="header-ticket">
-            <div className="header-ticket__body">
-                <div className="header-ticket__left" onClick={onActive}>
-                    <img src={arrow} alt="#" />
-                    <div className="header-ticket__text">Мои билеты</div>
-                </div>
-                <img className="header-ticket__question" src={question} alt="#" />
-            </div>
-        </div>
-    )
-}
 
 const WhiteBox = () => {
     useEffect(() => {
@@ -89,7 +73,7 @@ const WhiteBox = () => {
             <div className="white-box__body">
                 <div className="white-box__title">Минск</div>
                 <div className="white-box__sub-title">Государственное предприятие "Минсктранс"</div>
-                <div className="white-box__qr" onClick={fullScreen}>
+                <div className="white-box__qr">
                     <img src={qr} alt="#" />
                 </div>
                 <div className="white-box__buss">

@@ -1,9 +1,13 @@
 @import '../oplati/oplati.scss';
 
+.div-for-margin {
+    padding: 0px 0px 50px 0px;
+}
+
 //=.current-ticket
 .current-ticket {
     position: absolute;
-    top: 37px;
+    top: 0;
     left: 0;
     width: 100vw;
     //height: 700px;
@@ -52,40 +56,6 @@
             width: 40px;
             height: 40px;
         }
-    }
-}
-
-//=.header-ticket
-.header-ticket {
-    //margin: 10px 0px 10px 0px;
-    // .header-ticket__body
-    &__body {
-        display: flex;
-        justify-content: space-between;
-    }
-    // .header-ticket__left
-    &__left {
-        display: flex;
-        align-items: center;
-        & img {
-            object-fit: cover;
-            width: 25px;
-            height: 25px;
-            transform: rotate(180deg);
-            margin: 0px 10px 0px 0px;
-        }
-    }
-    // .header-ticket__text
-    &__text {
-        color: $color-oplati;
-        font-family: 'Roboto';
-        font-size: 18px;
-    }
-    // .header-ticket__question
-    &__question {
-        object-fit: cover;
-        width: 25px;
-        height: 25px;
     }
 }
 
@@ -195,7 +165,7 @@
         font-size: 22px;
     }
     &__down-text {
-        padding: 10px 0px 7px 0px;
+        padding: 10px 0px 30px 0px;
         color: rgba(0, 0, 0, 0.45);
         font-family: 'Roboto';
         font-size: 13px;

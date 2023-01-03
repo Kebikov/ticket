@@ -14,12 +14,20 @@ $color-background: #006d57;
 
 //=.header-oplati
 .header-oplati {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
     //margin: code;
     //* .header-oplati__body
     &__body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100vw;
+        background-color: #000;
+        margin: 5px 0px 0px 0px;
     }
     // .header-oplati__text
     &__left {
@@ -65,13 +73,49 @@ $color-background: #006d57;
         }
     }
 }
+//=.header-ticket
+.header-ticket {
+    background-color: #000;
+    width: 100vw;
+    // .header-ticket__body
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0px 0px 0px;
+    }
+    // .header-ticket__left
+    &__left {
+        display: flex;
+        align-items: center;
+        & img {
+            object-fit: cover;
+            width: 25px;
+            height: 25px;
+            transform: rotate(180deg);
+            margin: 0px 10px 0px 0px;
+        }
+    }
+    // .header-ticket__text
+    &__text {
+        color: $color-oplati;
+        font-family: 'Roboto';
+        font-size: 18px;
+    }
+    // .header-ticket__question
+    &__question {
+        object-fit: cover;
+        width: 22px;
+        height: 22px;
+        margin:0px 10px 0px 0px;
+    }
+}
 
 //=.main
 .main {
     background-color: $color-background;
     padding: 0px 0px 10px 0px;
     border-radius: 10px;
-    margin: 0px 5px 0px 5px;
+    margin: 50px 5px 0px 5px;
     // .main__body
     &__body {
     }
@@ -126,7 +170,7 @@ $color-background: #006d57;
     &__icon {
         display: flex;
         justify-content: space-between;
-        padding: 20px 20px 20px 20px;
+        padding: 30px 20px 40px 20px;
     }
     // .main__box
     &__box {
@@ -136,8 +180,8 @@ $color-background: #006d57;
         flex-direction: column;
         & img {
             object-fit: cover;
-            width: 40px;
-            height: 35px;
+            width: 50px;
+            height: 40px;
         }
     }
     // .main__icon-text
